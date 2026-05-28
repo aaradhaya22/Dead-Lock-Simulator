@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+jspm_packages/
+web_modules/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv
+venv/
+ENV/
+env/
+
+# Production/Build
+dist/
+build/
+out/
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE/Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+
+# Backend environment
+backend/.env
+
+# Frontend dependencies
+frontend/node_modules/
+
+# Python virtual environment
+backend/venv/
+
+# Python cache
+backend/__pycache__/
+
+# Vite cache
+frontend/.vite/

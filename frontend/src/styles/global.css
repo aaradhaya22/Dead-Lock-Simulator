@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-darkBg text-slate-100 font-sans antialiased selection:bg-cyberCyan selection:text-darkBg;
+    background-image: 
+      radial-gradient(at 10% 10%, rgba(79, 172, 254, 0.08) 0px, transparent 50%),
+      radial-gradient(at 90% 90%, rgba(0, 242, 254, 0.05) 0px, transparent 50%),
+      radial-gradient(at 50% 10%, rgba(139, 92, 246, 0.04) 0px, transparent 50%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Custom Neon Scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-darkBg;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(0, 242, 254, 0.3) 0%, rgba(79, 172, 254, 0.3) 100%);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(0, 242, 254, 0.6) 0%, rgba(79, 172, 254, 0.6) 100%);
+  }
+}
+
+@layer components {
+  /* Glassmorphism Panel styles */
+  .glass-panel {
+    @apply bg-slate-900/30 backdrop-blur-cyber border border-white/5 rounded-xl shadow-2xl;
+  }
+
+  .glass-panel-glow {
+    @apply bg-slate-900/40 backdrop-blur-cyber border border-cyberCyan/20 rounded-xl shadow-2xl animate-glow;
+  }
+
+  /* Neon text glows */
+  .text-glow-cyan {
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+  }
+
+  .text-glow-green {
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+  }
+
+  .text-glow-red {
+    text-shadow: 0 0 10px rgba(244, 63, 94, 0.5);
+  }
+}
+
+/* Custom UI utility classes */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Keyframes for sliding loader */
+@keyframes loadingSlide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-loading-slide {
+  animation: loadingSlide 1.5s infinite linear;
+}
