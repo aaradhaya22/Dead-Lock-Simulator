@@ -1,148 +1,482 @@
 # AI-Powered Deadlock Detection and Prevention System
 
-An educational operating-system simulator demonstrating deadlock detection, safety checks, and resource allocation using the **Banker's Algorithm** and **Generative AI explanations** powered by the **Google Gemini API**.
+An interactive Operating System simulator demonstrating **Deadlock Detection**, **Deadlock Prevention**, **Resource Allocation**, and **Safe State Analysis** using the **Banker’s Algorithm** integrated with **AI-powered educational explanations** using **OpenRouter AI**.
 
-The application is structured into a Python Flask backend (handling state management, safety evaluation, and Gemini AI querying) and a React (Vite + Tailwind CSS + Framer Motion) frontend (displaying interactive state matrices, animated safe sequences, status indicators, and an AI chat interface).
+This project combines:
+
+* Operating System concepts
+* Full-stack web development
+* AI integration
+* Interactive visualization
+
+The application is designed as an educational simulator that helps students understand how deadlocks occur, how Banker’s Algorithm works, and how operating systems safely allocate resources.
 
 ---
 
-## 🛠️ Architecture & Folder Responsibilities
+# 🚀 Features
 
-The project follows a clean, decoupled architecture:
+## ✅ Banker’s Algorithm Simulation
 
+* Dynamic resource allocation simulation
+* Safe state verification
+* Deadlock prevention mechanism
+* Need matrix calculation
+* Safe sequence generation
+
+## ✅ Interactive Dashboard
+
+* Configure processes and resources dynamically
+* Edit matrices in real-time
+* Visualize safe and unsafe states
+* Animated safe sequence visualization
+
+## ✅ AI-Powered Educational Assistant
+
+* AI-generated explanations for:
+
+  * Safe states
+  * Unsafe states
+  * Resource requests
+  * Deadlock concepts
+* Interactive chatbot support
+* Powered by OpenRouter AI
+
+## ✅ Modern UI/UX
+
+* Futuristic dark-themed dashboard
+* Glassmorphism design
+* Responsive layout
+* Smooth animations using Framer Motion
+
+---
+
+# 🛠️ Technology Stack
+
+## Frontend
+
+* React.js
+* Vite
+* Tailwind CSS
+* Framer Motion
+* Axios
+* Lucide React
+
+## Backend
+
+* Python
+* Flask
+* Flask-CORS
+
+## AI Integration
+
+* OpenRouter API
+* Llama 3.1 8B Instruct Model
+
+---
+
+# 📸 Application Screenshots
+
+## Home Page
+
+(Add screenshot here)
+
+## Dashboard
+
+(Add screenshot here)
+
+## Need Matrix & AI Explanation
+
+(Add screenshot here)
+
+## Safe Sequence Visualization
+
+(Add screenshot here)
+
+---
+
+# 🧠 How the Simulator Works
+
+## Step 1 — User Configuration
+
+The user enters:
+
+* Number of processes
+* Number of resources
+* Available resource vector
+* Maximum resource requirements
+* Allocation matrix
+
+---
+
+## Step 2 — Need Matrix Calculation
+
+The simulator calculates:
+
+```text
+Need = Max - Allocation
 ```
+
+This determines how many additional resources each process may still require.
+
+---
+
+## Step 3 — Banker’s Algorithm Execution
+
+The backend checks:
+
+* Whether all processes can safely execute
+* Whether the system is in a safe state
+* Whether deadlock may occur
+
+If a valid execution order exists, the simulator generates a safe sequence.
+
+Example:
+
+```text
+P1 → P3 → P4 → P0 → P2
+```
+
+---
+
+## Step 4 — Resource Request Simulation
+
+When a process requests resources:
+
+1. Resources are temporarily allocated
+2. Safety algorithm re-runs
+3. Request is:
+
+   * Granted if system remains safe
+   * Denied if unsafe state occurs
+
+---
+
+## Step 5 — AI Explanation Generation
+
+The AI system generates educational explanations describing:
+
+* Why the state is safe or unsafe
+* Why a request was accepted or denied
+* How Banker’s Algorithm made decisions
+
+---
+
+# 📂 Project Structure
+
+```text
 project-root/
 │
-├── .gitignore              # Configured ignores for node_modules, .env, pycache, etc.
-├── README.md               # Documentation and setup guide (this file)
-│
-├── backend/                # Flask Backend
-│   ├── app.py              # Application entrypoint & Blueprint registration
-│   ├── banker.py           # Banker's Safety and Resource Request Algorithms
-│   ├── ai_service.py       # Gemini API service wrapper & prompt management
-│   ├── requirements.txt    # Python packages list
-│   ├── .env                # Local environment secrets (not committed)
+├── backend/
+│   ├── app.py
+│   ├── banker.py
+│   ├── ai_service.py
+│   ├── requirements.txt
+│   ├── .env
 │   ├── models/
-│   │   └── system_state.py # Centralized application state model
+│   │   └── system_state.py
 │   └── routes/
-│       ├── initialize.py       # Initialize simulation matrices API
-│       ├── request_resource.py # Resource request allocation & safety evaluation API
-│       ├── safe_check.py       # Direct state safety check API
-│       └── ai_routes.py        # Gemini-based auto-explanations & chatbot conversations API
+│       ├── initialize.py
+│       ├── request_resource.py
+│       ├── safe_check.py
+│       └── ai_routes.py
 │
-└── frontend/               # React + Vite Frontend
-    ├── package.json        # Node.js dependencies (Tailwind, Axios, Framer Motion, Lucide)
-    ├── vite.config.js      # Vite compilation configuration
-    ├── tailwind.config.js  # Tailwind custom design/theme rules
-    └── src/
-        ├── main.jsx        # React root rendering
-        ├── App.jsx         # App router and layout wrapper
-        ├── api/
-        │   └── api.js      # Axios API client setup and routes
-        ├── components/
-        │   ├── Navbar.jsx          # Futuristic top navigation bar
-        │   ├── MatrixInput.jsx     # Matrix grids to input Max, Allocation, and Available resources
-        │   ├── NeedMatrix.jsx      # Live Need matrix visualizer
-        │   ├── SafeSequence.jsx    # Animated safe sequence path visualizer
-        │   ├── RequestPanel.jsx    # Process resource request manager
-        │   ├── AIChatbot.jsx       # Sliding drawer chatbot panel
-        │   ├── ExplanationCard.jsx # Gemini explanation display
-        │   └── StatusCard.jsx      # Telemetry logs & Safe/Unsafe indicator panel
-        ├── pages/
-        │   ├── Home.jsx            # Animated hero home page
-        │   └── Dashboard.jsx       # Control dashboard representing full state
-        ├── styles/
-        │   └── global.css          # Core CSS variables, styling, and scrollbars
-        └── utils/
-            └── matrixHelpers.js    # Matrix dimensions creation and formatting helpers
+├── frontend/
+│   ├── package.json
+│   ├── vite.config.js
+│   ├── tailwind.config.js
+│   └── src/
+│       ├── api/
+│       ├── components/
+│       ├── pages/
+│       ├── styles/
+│       └── utils/
+│
+└── README.md
 ```
 
 ---
 
-## ⚙️ Backend Setup & API Docs
+# ⚙️ Backend Setup
 
-### 1. Requirements & Dependencies
-Navigate to the `backend/` folder. Ensure you have Python 3.8+ installed.
+## 1. Navigate to Backend
 
 ```bash
 cd backend
-python -m venv venv
-# On Windows (PowerShell)
-.\venv\Scripts\Activate.ps1
-# On macOS/Linux
-source venv/bin/activate
+```
 
+---
+
+## 2. Create Virtual Environment
+
+### Windows PowerShell
+
+```bash
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+```
+
+### macOS/Linux
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+---
+
+## 3. Install Dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
-### 2. Gemini API Setup & Environment Variable
-Create a file named `.env` in the `backend/` folder:
+---
+
+## 4. Configure Environment Variables
+
+Create a `.env` file inside `backend/`
+
 ```env
-GEMINI_API_KEY=your_google_gemini_api_key_here
+OPENROUTER_API_KEY=your_api_key_here
 PORT=5000
 ```
-*Note: If `GEMINI_API_KEY` is not provided or fails, the application automatically falls back to detailed pre-defined educational explanations so the simulation runs without interruption.*
 
-### 3. API Endpoints
-All API inputs are validated for negative numbers and matrix dimension mismatches.
+---
 
-*   `POST /initialize`
-    *   **Body**: `{ "processes": 5, "resources": 3 }`
-    *   **Description**: Initializes state matrices. Returns matrices (Max, Allocation, Need) set to defaults and the current available vector.
-*   `POST /check-safe`
-    *   **Body**: `{ "available": [...], "max": [[...]], "allocation": [[...]] }`
-    *   **Description**: Executes safety evaluation using the safety algorithm. Returns safety status (`is_safe`) and the computed `safe_sequence`.
-*   `POST /request-resource`
-    *   **Body**: `{ "process_id": 0, "request": [...] }`
-    *   **Description**: Processes a request from process `process_id`. Performs request safety evaluation. If safe, updates allocation and available vectors. Returns whether granted and the safety proof/path.
-*   `POST /ai-explain`
-    *   **Body**: `{ "type": "request" | "chat", "state": { ... }, "request_details": { ... }, "message": "..." }`
-    *   **Description**: Resolves prompt configurations, sends context to Gemini, and returns structured markdown responses.
+## 5. Run Backend Server
 
-### 4. Running Backend
-From the `backend/` directory:
 ```bash
 python app.py
 ```
-The server will run on `http://127.0.0.1:5000`.
+
+Backend will run on:
+
+```text
+http://127.0.0.1:5000
+```
 
 ---
 
-## 💻 Frontend Setup & Features
+# 💻 Frontend Setup
 
-### 1. Installation
-Navigate to the `frontend/` folder:
+## 1. Navigate to Frontend
 
 ```bash
 cd frontend
+```
+
+---
+
+## 2. Install Dependencies
+
+```bash
 npm install
 ```
 
-### 2. State Persistence
-The frontend incorporates a local cache using **browser localStorage**. If you reload the page, the active matrices configuration, allocation state, and available vectors are automatically retrieved so you can continue simulating uninterrupted.
+---
 
-### 3. Running Frontend
-From the `frontend/` directory:
+## 3. Start Frontend
+
 ```bash
 npm run dev
 ```
-Open `http://localhost:5173` in your browser.
+
+Frontend will run on:
+
+```text
+http://localhost:5173
+```
 
 ---
 
-## 🔮 Key Application Features
+# 🔌 API Endpoints
 
-1.  **Banker's Algorithm Visualizer**: Complete simulation with dynamic inputs for Max resources, allocation values, and current system inventory.
-2.  **Safety Path Nodes**: An animated step-by-step layout using `framer-motion` showing how the operating system schedules processes to avoid deadlocks.
-3.  **Resource Allocation Requests**: Submit custom resource vectors. Watch the simulator run the Banker's safety check and either commit the allocations or roll them back.
-4.  **AI Auto-Explanation Card**: Powered by Gemini, the system writes a comprehensive, educational explanation detailing why a request was granted or denied.
-5.  **Interactive AI Chatbot Sidebar**: A floating panel where students can ask questions such as *"What is a resource allocation graph?"*, *"How does Banker's Algorithm differ from deadlock detection?"*, or *"Why is my system state unsafe?"*.
-6.  **Advanced UI Theme**: Futuristic OS dark dashboard design featuring high-contrast gradients, backdrop filters (glassmorphism), clean tables, status indicators, and loading skeletons.
+## POST `/initialize`
+
+Initializes simulation matrices.
+
+### Request
+
+```json
+{
+  "processes": 5,
+  "resources": 3
+}
+```
 
 ---
 
-## 🚀 Troubleshooting
+## POST `/check-safe`
 
-*   **Gemini API Key Issues**: If you receive errors regarding the Gemini model or keys, verify that the backend `.env` is inside the `backend/` folder and key is correct. If the API rate limit is reached or internet is disconnected, fallback mocks will be activated.
-*   **CORS Blocked**: Confirm that `app.py` has CORS correctly initialized using `CORS(app)`.
-*   **Port conflicts**: If port 5000 is occupied, change the port in backend `.env` and update the base URL in `frontend/src/api/api.js`.
+Checks whether the system is in a safe state.
+
+### Request
+
+```json
+{
+  "available": [...],
+  "max": [[...]],
+  "allocation": [[...]]
+}
+```
+
+---
+
+## POST `/request-resource`
+
+Processes a resource allocation request.
+
+### Request
+
+```json
+{
+  "process_id": 0,
+  "request": [...]
+}
+```
+
+---
+
+## POST `/ai-explain`
+
+Generates AI-based explanations and chatbot responses.
+
+### Request
+
+```json
+{
+  "type": "chat",
+  "message": "Explain deadlock"
+}
+```
+
+---
+
+# 🔥 Key Features
+
+* Dynamic matrix editing
+* Real-time Need Matrix calculation
+* Animated safe sequence generation
+* Deadlock prevention simulation
+* AI-powered educational explanations
+* Interactive chatbot assistant
+* Responsive futuristic UI
+* Local state persistence
+
+---
+
+# 🚀 Future Improvements
+
+* Resource Allocation Graph visualization
+* Multi-user simulation mode
+* Real-time process animations
+* Database integration
+* Simulation history tracking
+* PDF report export
+* Voice-enabled AI tutor
+* Docker deployment
+* Cloud hosting support
+
+---
+
+# 🧪 Example Use Case
+
+## Scenario
+
+Processes:
+
+```text
+P0, P1, P2, P3, P4
+```
+
+Resources:
+
+```text
+A, B, C
+```
+
+The simulator:
+
+1. Calculates Need Matrix
+2. Runs Banker’s Algorithm
+3. Generates safe sequence
+4. Prevents unsafe allocations
+5. Explains results using AI
+
+---
+
+# 🚨 Troubleshooting
+
+## Backend Not Starting
+
+Ensure virtual environment is activated:
+
+```bash
+.\venv\Scripts\Activate.ps1
+```
+
+---
+
+## Missing Python Packages
+
+Run:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Frontend Errors
+
+Run:
+
+```bash
+npm install
+```
+
+---
+
+## OpenRouter API Errors
+
+Verify:
+
+* `.env` exists inside `backend/`
+* API key is valid
+* Internet connection is active
+
+If API fails:
+
+* fallback educational responses are automatically used
+
+---
+
+# 👨‍💻 Author
+
+## Aaradhaya Dattole
+
+* GitHub: https://github.com/aaradhaya22
+
+---
+
+# ⭐ Project Highlights
+
+This project demonstrates:
+
+* Operating System concepts
+* Deadlock prevention
+* Full-stack web development
+* API integration
+* AI-assisted education
+* Interactive visualization
+
+It is designed as both:
+
+* an educational simulator
+* a portfolio-ready technical project
+
+---
+
+# 📜 License
+
+This project is developed for educational and academic purposes.
