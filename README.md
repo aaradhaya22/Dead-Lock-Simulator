@@ -74,20 +74,6 @@ The application is designed as an educational simulator that helps students unde
 
 ---
 
-# 📸 Application Screenshots
-
-## Home Page
-
-(Add screenshot here)
-
-## Dashboard
-
-(Add screenshot here)
-
-## Need Matrix & AI Explanation
-
-(Add screenshot here)
-
 ## Safe Sequence Visualization
 
 (Add screenshot here)
